@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SNAKEMAKE_BIN="/mnt/home/favoroli/.conda/envs/snakemake/bin/snakemake"
+SNAKEMAKE_BIN="snakemake"
 
-cd /mnt/gs21/scratch/favoroli/rnaseq-preprocessing-legacy-test
+# Resolve repository root relative to this script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKDIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 "${SNAKEMAKE_BIN}" \
   --profile profiles/slurm \
