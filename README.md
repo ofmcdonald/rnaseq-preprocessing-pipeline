@@ -1,3 +1,5 @@
+![version](https://img.shields.io/badge/version-1.0.0-blue)
+
 # RNA-seq Preprocessing Pipeline (Paired-end Mus musculus)
 
 This repository contains a fully automated Snakemake workflow for preprocessing paired-end RNA-seq data from Mus musculus (mouse). The pipeline performs quality control, trimming, alignment, quantification, and QC reporting using a reproducible conda-based environment and SLURM execution.
@@ -242,7 +244,7 @@ Key outputs:
 
 ## STAR reference index
 
-The STAR genome index is generated automatically on first run using the reference FASTA and GTF specified in `config.yaml`.
+STAR genome index is generated automatically on first run using the reference FASTA and GTF specified in config.yaml (these must be provided by the user).
 
 ```
 reference/star_index/
@@ -311,6 +313,16 @@ This pipeline is designed to be:
 ## Author / maintenance
 
 Olivia McDonald, PhD || okfavor@outlook.com
+
+---
+
+## Citation
+
+If you use this pipeline, please cite it as:
+
+McDonald OK (2026). RNA-seq Preprocessing Pipeline (Paired-end Mus musculus).  
+GitHub repository: https://github.com/YOUR_USERNAME/rnaseq-preprocessing-pipeline  
+Version: 1.0.0
 
 ---
 
