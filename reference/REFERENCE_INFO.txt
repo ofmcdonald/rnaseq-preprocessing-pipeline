@@ -1,5 +1,59 @@
-Genome: GRCm39
-Annotation: Ensembl v115
-STAR: 2.7.10b
-Read length: 150
-sjdbOverhang: 149
+# Reference Files
+
+This pipeline was developed and tested using the following reference resources:
+
+* Species: Mus musculus
+* Genome assembly: GRCm39
+* Annotation source: Ensembl
+* Annotation release: 115
+* STAR version: 2.7.10b
+* Read length: 150 bp paired-end
+* STAR sjdbOverhang: 149
+
+## Expected Directory Structure
+
+reference/
+├── genome/
+│   └── Mus_musculus.GRCm39.dna.primary_assembly.fa
+├── annotation/
+│   └── Mus_musculus.GRCm39.115.gtf
+└── star_index/
+
+The `star_index/` directory is generated automatically by the Snakemake workflow and should not be downloaded manually.
+
+## Required Reference Files
+
+### Genome FASTA
+
+Expected filename:
+
+Mus_musculus.GRCm39.dna.primary_assembly.fa
+
+Download from Ensembl:
+
+https://ftp.ensembl.org/pub/release-115/fasta/mus_musculus/dna/
+
+### Annotation GTF
+
+Expected filename:
+
+Mus_musculus.GRCm39.115.gtf
+
+Download from Ensembl:
+
+https://ftp.ensembl.org/pub/release-115/gtf/mus_musculus/
+
+## Configuration
+
+The paths to the FASTA and GTF files are specified in `config.yaml`.
+
+Example:
+
+fasta: reference/genome/Mus_musculus.GRCm39.dna.primary_assembly.fa
+gtf: reference/annotation/Mus_musculus.GRCm39.115.gtf
+
+If alternative references are used, update `config.yaml` accordingly.
+
+## Notes
+
+This workflow has been validated using Ensembl release 115 annotations and the GRCm39 primary assembly. Alternative genome builds or annotation releases may produce different alignment and quantification results.
