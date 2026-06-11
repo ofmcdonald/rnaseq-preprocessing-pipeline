@@ -4,6 +4,20 @@ This repository contains a fully automated Snakemake workflow for preprocessing 
 
 ---
 
+## Quick start
+
+```bash
+conda activate snakemake-pipeline
+
+bash scripts/build_data_norm.sh
+bash scripts/generate_samples_tsv.sh
+
+bash run_snakemake.sh -n   # dry run
+bash run_snakemake.sh      # full run
+```
+
+---
+
 ## Overview
 
 The pipeline performs the following steps:
@@ -34,16 +48,19 @@ conda --version
 which conda
 ```
 
-It is recommended to add Conda to your shell startup file:
+If needed, add Miniforge to your PATH:
 
 ```bash
 export PATH="$HOME/miniforge3/bin:$PATH"
+```
+
+To make this persistent, add it to your `.bashrc` or `.bash_profile`.
 
 ---
 
-### 2. Snakemake environment
+### 2. Snakemake execution environment
 
-A dedicated environment is required:
+Create a dedicated environment for workflow execution:
 
 ```bash
 conda create -n snakemake-pipeline \
@@ -61,16 +78,17 @@ conda activate snakemake-pipeline
 
 ### 3. SLURM HPC configuration
 
-This pipeline assumes execution on a SLURM-managed HPC cluster.
+This pipeline is designed for SLURM-based HPC systems and uses the Snakemake SLURM executor plugin.
 
-Execution is controlled via the wrapper script:
+Execution is handled via:
 
 scripts/run_snakemake.sh
 
 You must configure:
-* SNAKEMAKE_BIN: path to Snakemake executable (cluster-dependent)
-* SLURM resources via Snakemake executor plugin settings (see profiles/slurm/)
-* Working directory path (WORKDIR must point to repository root)
+* SNAKEMAKE_BIN points to a valid Snakemake installation (cluster-specific)
+* SLURM settings are defined in profiles/slurm/
+* Per-rule resources (threads, memory, runtime) are defined in the Snakefile
+* Job submission is handled automatically by Snakemake
 
 Example:
 
@@ -84,13 +102,15 @@ or simply:
 SNAKEMAKE_BIN="snakemake"
 ```
 
-depending on your cluster setup.
+depending on your cluster configuration.
 
 ---
 
 ### 4. Working directory
 
-You MUST set the correct working directory in `run_snakemake.sh`:
+The working directory must be set inside `run_snakemake.sh`:
+
+Example:
 
 ```bash
 WORKDIR="/path/to/rnaseq-preprocessing-pipeline"
@@ -103,7 +123,20 @@ Snakemake must always be executed from the repository root.
 
 ## Input data requirements
 
-### 1. Raw FASTQ files
+### 1. Reference genome
+
+The pipeline requires a local reference genome:
+
+`reference/genome/Mus_musculus.GRCm39.dna.primary_assembly.fa`
+`reference/annotation/Mus_musculus.GRCm39.115.gtf`
+
+These are not downloaded automatically and must be provided by the user.
+
+Recommended sources:
+* Ensembl GRCm39 reference genome
+* Ensembl annotation v115 (or compatible)
+
+### 2. Raw FASTQ files
 
 The pipeline expects paired-end FASTQ files in:
 
@@ -209,7 +242,7 @@ Key outputs:
 
 ## STAR reference index
 
-The STAR genome index is generated automatically:
+The STAR genome index is generated automatically on first run using the reference FASTA and GTF specified in `config.yaml`.
 
 ```
 reference/star_index/
