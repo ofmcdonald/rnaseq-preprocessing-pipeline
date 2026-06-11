@@ -1,0 +1,5 @@
+Genome: GRCm39
+Annotation: Ensembl v115
+STAR: 2.7.10b
+Read length: 150
+sjdbOverhang: 149

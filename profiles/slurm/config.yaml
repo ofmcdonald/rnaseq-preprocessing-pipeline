@@ -1,0 +1,34 @@
+executor: slurm
+
+jobs: 50
+latency-wait: 60
+rerun-incomplete: true
+keep-going: true
+printshellcmds: true
+software-deployment-method:
+
+  - conda
+
+default-resources:
+
+  - mem_mb=4000
+  - runtime=60
+  - slurm_account=general
+  - slurm_partition=general-short
+
+use-conda: true
+conda-frontend: conda
+
+jobscript: "profiles/slurm/jobscript.sh"
+
+slurm-logdir: ".snakemake/slurm_logs"
+
+shared-fs-usage:
+
+  - persistence
+  - software-deployment
+  - software-deployment-cache
+  - sources
+  - input-output
+  - storage-local-copies
+  - source-cache

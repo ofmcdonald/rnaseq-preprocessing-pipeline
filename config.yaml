@@ -1,0 +1,4 @@
+fasta: "reference/genome/Mus_musculus.GRCm39.dna.primary_assembly.fa"
+gtf: "reference/annotation/Mus_musculus.GRCm39.115.gtf"
+bed: "reference/annotation/Mus_musculus.GRCm39.bed"
+samples: "samples.tsv"
