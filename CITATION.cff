@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+title: RNA-seq Preprocessing Pipeline (Paired-end Mus musculus)
+
+message: >
+  If you use this pipeline in your research, please cite it using the
+  information below. This workflow processes paired-end RNA-seq data
+  using Snakemake, STAR, fastp, RSeQC, samtools, and MultiQC.
+
+type: software
+
+authors:
+  - family-names: McDonald
+    given-names: Olivia
+    orcid: https://orcid.org/0000-0001-9164-7077
+
+version: 1.0.0
+date-released: 2026-06-11
+
+repository-code: https://github.com/ofmcdonald/rnaseq-preprocessing-pipeline
+
+license: MIT
+
+keywords:
+  - RNA-seq
+  - Snakemake
+  - bioinformatics
+  - STAR
+  - fastp
+  - MultiQC
+  - RSeQC
+  - Mus musculus
+  - SLURM
+  - HPC
+
+preferred-citation:
+  type: software
+  title: RNA-seq Preprocessing Pipeline (Paired-end Mus musculus)
+  authors:
+    - family-names: McDonald
+      given-names: Olivia
+  version: 1.0.0
+  year: 2026
+  url: https://github.com/ofmcdonald/rnaseq-preprocessing-pipeline
