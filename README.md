@@ -277,8 +277,7 @@ This pipeline is designed to be:
 
 ## Author / maintenance
 
-Olivia McDonald, PhD
-okfavor@outlook.com
+Olivia McDonald, PhD || okfavor@outlook.com
 
 ---
 
